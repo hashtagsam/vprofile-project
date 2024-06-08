@@ -4,21 +4,18 @@
 - MySQL 5.6 or later
 ######
 ## Technologies 
-- Spring MVC
-- Spring Security
-- Spring Data JPA
 - Maven
-- JSP
+- Tomcat
 - MySQL
 ## Database
-Here,we used Mysql DB 
+Here, we used Mysql DB 
 MSQL DB Installation Steps for Linux ubuntu 14.04:
 - $ sudo apt-get update
 - $ sudo apt-get install mysql-server
 
 Then look for the file :
 - /src/main/resources/accountsdb
-- accountsdb.sql file is a mysql dump file.we have to import this dump to mysql db server
-- > mysql -u <user_name> -p accounts < accountsdb.sql
+- db_backup.sql file is a mysql dump file. We have to import this dump to mysql db server
 
+Click ![here](https://github.com/hashtagsam/vprofile-project/blob/fdaea3ee520a838bad84ba567a30a9938b48e1c2/Project%204%20-%20Containerizing%20an%20application.pdf) for project description
 
