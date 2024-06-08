@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  vprodb:
+    build: 
+      context: ./Docker-files/db # location of the Dockerfile for building the db image
+    image: originalugo/cloud_project4_db # should be same name as the dockerhub repo
+    container_name: vprodb
+    ports:
+      - "3306:3306" # port mapping
+    volumes:
+      - vprodbdata:/var/lib/mysql # mapping the container volumne
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbnpass
+
+  vprocache01:
+    image: memcached
+    ports:
+      - "11211:11211"
+  
+  vprormq01:
+    image: rabbitmq
+    ports: 
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS= guest
+
+  vproapp:
+    build: 
+      context: ./Docker-files/app # location of the Dockerfile for building the tomcat image
+    image: originalugo/cloud_project4_app # should be same name as the dockerhub repo
+    container_name: vproapp
+    ports:
+      - "8080:8080" # port mapping
+    volumes:
+      - vproappdata:/var/local/tomcat/webapps # mapping the container volumne
+
+  vproweb:
+    build: 
+      context: ./Docker-files/web # location of the Dockerfile for building the nginx image
+    image: originalugo/cloud_project4_web # should be same name as the dockerhub repo
+    container_name: vproweb
+    ports:
+      - "80:80" # port mapping
+
+volumes:
+  vprodbdata: {}
+  vproappdata: {}
