@@ -16,7 +16,7 @@ pipeline {
 
             steps {
                 sh '''
-                    echo 'Hello World'
+                    cat README.md
                 '''
             }
 
