@@ -12,7 +12,7 @@ pipeline {
         }
 
         stage('cat ReadMe file'){
-            when {branch "vp-rem" }
+            when {branch "vpro-*" }
 
             steps {
                 sh '''
