@@ -16,7 +16,7 @@ pipeline {
 
             steps {
                 sh '''
-                    cat 'Hello World'
+                    echo 'Hello World'
                 '''
             }
 
