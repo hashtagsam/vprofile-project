@@ -70,7 +70,7 @@ pipeline {
           }
 
           steps {
-            withSonarQubeEnv("${SONNARSCANNER}") {
+            withSonarQubeEnv("${SONNARSCANNER}") { 
                 // the src directory in sources is the directory in github where the sourcecode is located
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile-repo \
