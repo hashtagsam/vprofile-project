@@ -24,6 +24,7 @@ pipeline {
         NEXUS_CREDENTIAL_ID = "nexuslogin"
         ARTVERSION = "${env.BUILD_ID}"
         SONARSCANNER = 'sonarscanner'
+        SONARSERVER = 'sonarserver'
     }
 	
     stages{
@@ -66,11 +67,11 @@ pipeline {
         stage('CODE ANALYSIS with SONARQUBE') {
           
 		  environment {
-             scannerHome = tool "${SONNARSCANNER}"
+             scannerHome = tool "${SONARSCANNER}"
           }
 
           steps {
-            withSonarQubeEnv("${SONNARSCANNER}") { 
+            withSonarQubeEnv("${SONARSERVER}") { 
                 // the src directory in sources is the directory in github where the sourcecode is located
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile-repo \
